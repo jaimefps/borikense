@@ -1,0 +1,15 @@
+{
+  "manifest_version":2,
+  "name":"Borikense",
+  "version": "0.1",
+  "content_scripts": [
+    /**
+    *  Each object points to target URLs and what scripts to run:
+    */
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+
+  ]
+}
