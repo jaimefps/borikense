@@ -28,7 +28,7 @@ function R_ComoEnPR(str) {
 function S_ComoEnPR(str) {
   return str.replace(/s(?=[^aeiou]|$)/g, 'j');
 }
-const types = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a'];
+const types = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'];
 
 for (type of types) {
   const elements = document.getElementsByTagName(type);
