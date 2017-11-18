@@ -1,32 +1,13 @@
 /**
- * Relgas de intercambiar "R" por "L":
- * 
- * 1- Si la "R" es la última letra de la palabra:
-    * Ejemplos:
-      * jugar = jugal,
-      * bailar = bailal,
-      * exprimir = ejprimil,
-      * todos los verbos en forma de infinitivo...
- *
- * 2 - Si la "R" tiene una vocal antes y una consonante después (sin contar "RR"):
-    * Ejemplos:
-      * apartamento = apaltamento,
-      * cerveza = celveza,
-      * conversación = convelsación,
-      * invierno = invielno,
-      * puerta = puelta,
-*/
-
+ * how puertorricans substitute 'r' for 'l' in some cases:
+ */
 function R_ComoEnPR(str) {
   return str.replace(/r(?=[^aeiour]|$)/g, 'l');
 }
 
 /**
- * Reglas de intercambiar "S" por aspiración (o por "J"):
- * 
- * ...
+ * how puertorricans substitute 's' for an aspirated sound:
  */
-
 function S_ComoEnPR(str) {
   return str.replace(/s(?=[^aeiou]|$)/g, 'j');
 }

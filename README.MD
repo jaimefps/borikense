@@ -1,2 +1,2 @@
 # borikense
-Chrome extension that changes text in the browser to a Puerto Rican accent.
+Changes text on Wikipedia to a Puerto Rican accent, if reading the Spanish version of an article.
