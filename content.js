@@ -2,14 +2,14 @@
  * how puertorricans substitute 'r' for 'l' in some cases:
  */
 function R_ComoEnPR(str) {
-  return str.replace(/r(?=[^aeiour]|$)/g, 'l');
+  return str.replace(/r(?=[^aeiouráéíóú]|$)/g, 'l');   
 }
 
 /**
  * how puertorricans substitute 's' for an aspirated sound:
  */
 function S_ComoEnPR(str) {
-  return str.replace(/s(?=[^aeiou]|$)/g, 'j');
+  return str.replace(/s(?=[^aeiouáéíóú]|$)/g, 'j');
 }
 
 const types = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a'];
