@@ -1,10 +1,11 @@
-// npm modules:
-const expect = require('expect');
-
-// accents to be tested:
+/******************************************************************************
+ *  Only change to this file should be to add elements to the "accents" array:
+ *****************************************************************************/
 const accents = [
   { title: 'BORIKENSE', lib: require('../../src/accents/borikense') }
 ];
+
+const expect = require('expect');
 
 // util for testing all accents:
 const Tester = {

@@ -1,14 +1,12 @@
 /**
  * TODO
- * 1. add start of string checks
- * 2. add end of string checks
- * 3. play with words and phrases.
  * 
- * "exceptions" need to be built into the system:
+ * Maybe I need to add "exceptions" into the system.
+ * def. "exception": words that match the pattern but should not be affected by replacement.
  * 
  * Quick and dirty solution:
  * Make a first sweep of the text and create a list of "exceptions".
- * Replacements don't occur when the exception is found. (wrapper function for "replace"" method)...
+ * Replacements don't occur when the exception is found. (wrapper function for "replace method)...
  */
 
 module.exports = {
@@ -140,6 +138,4 @@ module.exports = {
       exceptions: []    
     } 
   }
-
-  // diptongos, etc.
 }
