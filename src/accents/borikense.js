@@ -106,7 +106,7 @@ module.exports = {
 
   para: {
     method (str) {
-      return str.replace(/\bpara(?=\W|$)/g, 'pa')
+      return str.replace(/\bpara(?=\W|$)/g, 'pa');
     },
     cases: {
       replace: [
@@ -120,6 +120,25 @@ module.exports = {
       ],
       exceptions: []    
     }
+  },
+
+  que_bueno: {
+    method (str) {
+      return str.replace(/\bque\sbueno(?=\W|$)/g, 'que weno');
+    },
+    cases: {
+      replace: [
+        { og:'que bueno', trans:'que weno' },
+        { og:'asd123 que bueno 123ads', trans:'asd123 que weno 123ads'}
+      ],
+      ignore: [
+        'que malo',
+        'que bien',
+        'bueno',
+        'que'
+      ],
+      exceptions: []    
+    } 
   }
 
   // diptongos, etc.
