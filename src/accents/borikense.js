@@ -66,13 +66,14 @@ module.exports = {
   ado: {
     method (str) {
       // if the word ends in 'ado'
-      return str.replace(/ado(?=[\W]|$)/g, 'au');
+      return str.replace(/\Bado(?=\W|$)/g, 'au');
     },
     cases: {
       replace: [
         // ends in 'ado':
         { og:'cansado', trans:'cansau' },
         { og:'trepado', trans:'trepau' },
+        { og:'asd123 trepado asd123', trans:'asd123 trepau asd123' },
       ],
       ignore: [
       // 'ado' is not end of string:
@@ -86,13 +87,14 @@ module.exports = {
   ido: {
     method (str) {
       // if the word ends in 'ido'
-      return str.replace(/\Bido(?=[\W]|$)/g, 'ío');
+      return str.replace(/\Bido(?=\W|$)/g, 'ío');
     },
     cases: {
       replace: [
         // ends in 'ido':
         { og:'partido', trans:'partío' },
-        { og:'molido', trans:'molío' }
+        { og:'molido', trans:'molío' },
+        { og:'123asd molido asd123', trans:'123asd molío asd123' }
       ],
       ignore: [
         'ido', // TODO : test not passed for this case!
@@ -100,12 +102,25 @@ module.exports = {
       ],
       exceptions: []  
     }
+  },
 
+  para: {
+    method (str) {
+      return str.replace(/\bpara(?=\W|$)/g, 'pa')
+    },
+    cases: {
+      replace: [
+        { og:'para', trans:'pa' },
+        { og:'asd123 para 123ads', trans:'asd123 pa 123ads'}
+      ],
+      ignore: [
+        'paramédico',
+        'parar',
+        'acapara'
+      ],
+      exceptions: []    
+    }
   }
-
-  // para (str) {
-  //   return str.replace(/\Wpara\W/, 'pa')
-  // },
 
   // diptongos, etc.
 }
