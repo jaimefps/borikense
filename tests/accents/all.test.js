@@ -1,58 +1,37 @@
-/******************************************
- *                Imports:
- *****************************************/
-
 // npm modules:
 const expect = require('expect');
 
-// dictionaries for testing:
-const borikenseDic = require('./borikenseDic');
+// accents to be tested:
+const accents = [
+  { title: 'BORIKENSE', lib: require('../../src/accents/borikense') }
+];
 
-// accent libs:
-const borikense = require('../../src/accents/borikense');
-
-/******************************************
- *      Class for all accent testing:
- *****************************************/
-
-class Tester {
-  static replace (dictionary, type, accent) {
-    dictionary[type]['replace'].forEach((x) => {
-      expect(accent[type](x.og)).toEqual(x.trans);
+// class for testing all accents:
+const Tester = {
+  replace (accent, type) {
+    accent[type].cases.replace.forEach((x) => {
+      expect(accent[type].method(x.og)).toEqual(x.trans);
     })
-  }
-  static ignore (dictionary, type, accent) {
-    dictionary[type]['ignore'].forEach((word) => {
-      expect(accent[type](word)).toEqual(word);
+  },
+  ignore (accent, type) {
+    accent[type].cases.ignore.forEach((word) => {
+      expect(accent[type].method(word)).toEqual(word);
     })
-  }
-  static exeption (dictionary, type, accent) {
+  },
+  exception (accent, type) {
     // TODO
-  }
-  static verify (dictionary, accent) {
+  },
+  verify (accent) {
     for (let type in accent) {
       describe (type, () => {
-        const tests = ['replace', 'ignore'];
-        tests.forEach((test) => it(test, this[test](dictionary, type, accent)));
+        const testCases = ['replace', 'ignore']; // TODO : add "exception".
+        testCases.forEach(test => it(test, () => this[test](accent, type)));
       })
     }
   }
 }
 
-/******************************************
- *      Run tests for all accents:
- *****************************************/
-
-// list of accents
-const accents = [
-  { 
-    title: 'borikense',
-    dic: borikenseDic,
-    lib: borikense,
-  }
-];
-
 // run tests for all accents:
 accents.forEach((accent) => {
-  describe (accent.title, () => Tester.verify(accent.dic, accent.lib));
+  describe (accent.title, () => Tester.verify(accent.lib));
 })

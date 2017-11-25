@@ -1,11 +1,11 @@
-import borikense from './borikense';
+import borikense from '../accents/borikense';
 
 const htmlTypes = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a'];
 
 function applyAccent (str, accent) {
   let mem = str
-  for (let regex in accent) {
-    mem = accent[regex](mem)
+  for (let quirk in accent) {
+    mem = accent[quirk].method(mem)
   }
   return mem
 }
