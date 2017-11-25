@@ -1,0 +1,27 @@
+{
+  "name": "borikense",
+  "version": "1.0.0",
+  "description": "Changes text on Wikipedia to a Puerto Rican accent, if reading the Spanish version of an article.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha ./tests/**/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaimefps/borikense.git"
+  },
+  "author": "benticurus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaimefps/borikense/issues"
+  },
+  "homepage": "https://github.com/jaimefps/borikense#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "expect": "^21.2.1",
+    "mocha": "^4.0.1"
+  }
+}

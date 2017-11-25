@@ -5,10 +5,10 @@
   "content_scripts": [
     {
       "matches": ["https://es.wikipedia.org/*"],
-      "js": ["content.js"]
+      "js": ["./src/filters/html.js"]
     }
   ],
   "browser_action": {
-    "default_icon": "flag.png"
+    "default_icon": "./assets/flag.png"
   }
 }
