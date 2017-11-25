@@ -6,7 +6,7 @@ const accents = [
   { title: 'BORIKENSE', lib: require('../../src/accents/borikense') }
 ];
 
-// class for testing all accents:
+// util for testing all accents:
 const Tester = {
   replace (accent, type) {
     accent[type].cases.replace.forEach((x) => {
