@@ -20,13 +20,15 @@ const AccentTester = {
     for (let type in accent) {
       describe (type, () => {
         const testCases = ['replace', 'ignore']; // TODO : add "exception".
-        testCases.forEach(test => it(test, () => this[test](accent, type)));
+        testCases.forEach((test) => it(test, () => this[test](accent, type)));
       })
     }
-  }
+  },
 }
 
 // run tests for all accents:
-accents.forEach((accent) => {
-  describe (accent.title, () => AccentTester.verify(accent.lib));
+accents.forEach((x) => {
+  describe (x.title, () => {
+    AccentTester.verify(x.lib);
+  })
 })

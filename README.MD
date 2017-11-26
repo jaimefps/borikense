@@ -4,5 +4,4 @@ Changes text on Wikipedia to a Puerto Rican accent, if reading the Spanish versi
 
 # TODO
 
-1. Organize code to accomodate multiple accents for different languages.
-2. Set up testing for simple accent test implementation.
+1. Create simple webapp interface for transforming blocks of text
