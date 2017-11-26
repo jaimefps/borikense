@@ -1,14 +1,8 @@
-/******************************************************************************
- *  Only change to this file should be to add elements to the "accents" array:
- *****************************************************************************/
-const accents = [
-  { title: 'BORIKENSE', lib: require('../../src/accents/borikense') }
-];
-
 const expect = require('expect');
+const accents = require('./accents');
 
 // util for testing all accents:
-const Tester = {
+const AccentTester = {
   replace (accent, type) {
     accent[type].cases.replace.forEach((x) => {
       expect(accent[type].method(x.og)).toEqual(x.trans);
@@ -34,5 +28,5 @@ const Tester = {
 
 // run tests for all accents:
 accents.forEach((accent) => {
-  describe (accent.title, () => Tester.verify(accent.lib));
+  describe (accent.title, () => AccentTester.verify(accent.lib));
 })
