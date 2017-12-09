@@ -1,8 +1,12 @@
 # borikense
-Changes text on Wikipedia to a Puerto Rican accent, if reading the Spanish version of an article.
+Easily expandable webapp for translating text to regional accents.
 
+# to run on your computer
+`npm i`
+`npm start`
 
 # TODO
-
-1. Create simple webapp interface for transforming blocks of text
-2. Play with testing frameworks for React
+0. Create documentation for contributting. 
+1. Create accent exeption logic
+2. Document contribution process
+3. Play with testing frameworks for React
