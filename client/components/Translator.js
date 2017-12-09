@@ -1,74 +1,110 @@
 import React from 'react';
-import applyAccent from '../../lib/filters/_apply';
+// components:
+import {Dropdown} from './_helpers';
+//lib:
+import translate from '../../lib/filters/_apply';
 
-/**
- * Component:
- */
-class Translator extends React.Component {
+// Main Component:
+export default class Translator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       input: "",
+      translation: "",
+      language: "",
       accent: "",
     }
     this.translate = this.translate.bind(this)
     this.handleInput = this.handleInput.bind(this)
-    this.accents = {
-      borikense: require('../../lib/accents/borikense'),
+    this.dictionary = {
+      spanish: {
+        borikense: require('../../lib/accents/borikense'),
+      }
     }
   }
   translate () {
+    const accent = this.dictionary[this.state.language][this.state.accent];
     this.setState({ 
-      input: applyAccent(this.state.input, this.accents[this.state.accent])
+      translation: translate(this.state.input, accent)
     })
   }
   handleInput (e) {
-    console.log('name:', e.target.name, e.target.value)
     this.setState({ 
       [e.target.name]: e.target.value
     })
   }
   render () {
     return (
-      <div>
-        Translator
+      <div className="translator-container">
 
-        <select name="accent" value={this.state.accent} onChange={this.handleInput}>
-          <option value="">Select</option>
+        <h1>Accent Translator</h1>
+
+        <div className="dropdowns-container">
+          <div>
+            <label> choose langauge: </label>
+            <Dropdown show
+                      name="language"
+                      list={this.dictionary}
+                      value={this.state.language}
+                      onChange={this.handleInput} />
+          </div>
+          <div>
+            {
+              this.state.language &&
+              <label> choose accent: </label>
+            }
+            <Dropdown show={this.state.language}
+                      name="accent"
+                      list={this.dictionary[this.state.language]}
+                      value={this.state.accent}
+                      onChange={this.handleInput} />
+          </div>
+        </div>
+
+        <div className="text-inputs-container">
           {
-            Object.keys(this.accents).map((x, idx) => {
-              return <option key={idx} value={x}>{x}</option>
-            })
+            this.state.language && this.state.accent &&
+            <textarea name="input"
+                      rows="4" 
+                      cols="50"
+                      placeholder="Text to translate..." 
+                      value={this.state.input}
+                      onChange={this.handleInput} />
           }
-        </select>
+          {
+            this.state.translation &&
+            <textarea name="input"
+                      rows="4" 
+                      cols="50"
+                      value={this.state.translation}
+                      readOnly/>
+          }
+          {
+            this.state.language && this.state.accent &&
+            <div>
+              <button onClick={this.translate}>Translate</button>
+            </div>
+          }
+        </div>
 
-        <input 
-          type="text"
-          name="input"
-          value={this.state.input}
-          onChange={this.handleInput} />
-
-        <button onClick={this.translate}>Translate</button>
       </div>
     )
   }
 }
 
-/**
- * Container:
- */
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+// Container:
+// import { bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({
+// const mapStateToProps = state => ({
 
-});
+// });
 
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {
+// const mapDispatchToProps = dispatch => bindActionCreators(
+//   {
 
-  },
-    dispatch,
-  );
+//   },
+//     dispatch,
+//   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Translator);
+// export default connect(mapStateToProps, mapDispatchToProps)(Translator);
