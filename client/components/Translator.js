@@ -1,8 +1,9 @@
 import React from 'react';
 // components:
 import {Dropdown} from './_helpers';
-//lib:
+//libs:
 import translate from '../../lib/filters/_apply';
+import dictionary from '../../lib/dictionary';
 
 // Main Component:
 export default class Translator extends React.Component {
@@ -16,14 +17,9 @@ export default class Translator extends React.Component {
     }
     this.translate = this.translate.bind(this)
     this.handleInput = this.handleInput.bind(this)
-    this.dictionary = {
-      spanish: {
-        borikense: require('../../lib/accents/borikense'),
-      }
-    }
   }
   translate () {
-    const accent = this.dictionary[this.state.language][this.state.accent];
+    const accent = dictionary[this.state.language][this.state.accent];
     this.setState({ 
       translation: translate(this.state.input, accent)
     })
@@ -44,7 +40,7 @@ export default class Translator extends React.Component {
             <label> choose langauge: </label>
             <Dropdown show
                       name="language"
-                      list={this.dictionary}
+                      list={dictionary}
                       value={this.state.language}
                       onChange={this.handleInput} />
           </div>
@@ -55,7 +51,7 @@ export default class Translator extends React.Component {
             }
             <Dropdown show={this.state.language}
                       name="accent"
-                      list={this.dictionary[this.state.language]}
+                      list={dictionary[this.state.language]}
                       value={this.state.accent}
                       onChange={this.handleInput} />
           </div>
@@ -63,7 +59,9 @@ export default class Translator extends React.Component {
 
         <div className="text-inputs-container">
           {
-            this.state.language && this.state.accent &&
+            this.state.language && 
+            this.state.accent && 
+            dictionary[this.state.language][this.state.accent] && 
             <textarea name="input"
                       rows="4" 
                       cols="50"
@@ -72,6 +70,9 @@ export default class Translator extends React.Component {
                       onChange={this.handleInput} />
           }
           {
+            this.state.language && 
+            this.state.accent && 
+            dictionary[this.state.language][this.state.accent] && 
             this.state.translation &&
             <textarea name="input"
                       rows="4" 
@@ -80,7 +81,9 @@ export default class Translator extends React.Component {
                       readOnly/>
           }
           {
-            this.state.language && this.state.accent &&
+            this.state.language && 
+            this.state.accent &&
+            dictionary[this.state.language][this.state.accent] && 
             <div>
               <button onClick={this.translate}>Translate</button>
             </div>
