@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const path = require('path')
 
 const config = {
-  context: __dirname + '/',
 
   entry: {
     index: './client/index.js',
@@ -18,12 +17,10 @@ const config = {
     filename: 'bundle.js'
   },
 
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
 
   devServer: {
-    historyApiFallback: true,
-    inline: true,
-    port: 8000
+    contentBase: './public'
   },
 
   module: {

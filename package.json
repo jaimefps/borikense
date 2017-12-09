@@ -9,7 +9,8 @@
   "scripts": {
     "test": "mocha ./tests/**/*.test.js",
     "build": "webpack",
-    "build:watch": "webpack --watch"
+    "build:watch": "webpack --watch",
+    "start": "webpack-dev-server --open"
   },
   "repository": {
     "type": "git",

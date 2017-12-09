@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 
 // components & reducers:
 import Translator from './components/Translator';
-import allReducers from './store';
+import allReducers from './reducers';
 
 // extras:
 const middleware = [thunk];
