@@ -1,4 +1,8 @@
 import React from 'react';
+import applyAccent from '../../lib/filters/_apply';
+import borikense from '../../lib/accents/borikense';
+
+
 
 /**
  * Component:
@@ -6,12 +10,35 @@ import React from 'react';
 class Translator extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      input: ""
+    }
+    this.translate = this.translate.bind(this)
+    this.handleInput = this.handleInput.bind(this)
   }
-
+  translate () {
+    this.setState({ 
+      input: applyAccent(this.state.input, borikense)
+    })
+  }
+  handleInput (e) {
+    this.setState({ 
+      input: e.target.value
+    })
+  }
   render () {
     return (
-      <div> Hello World </div>
+      <div>
+        Translator
+
+        <input 
+          type="text"
+          name="input"
+          value={this.state.input}
+          onChange={this.handleInput} />
+
+        <button onClick={this.translate}>Translate</button>
+      </div>
     )
   }
 }
