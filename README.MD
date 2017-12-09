@@ -5,3 +5,4 @@ Changes text on Wikipedia to a Puerto Rican accent, if reading the Spanish versi
 # TODO
 
 1. Create simple webapp interface for transforming blocks of text
+2. Play with testing frameworks for React

@@ -1,7 +1,3 @@
-/**
- * TODO - edit webpack
- */
-
 const webpack = require('webpack')
 const path = require('path')
 
@@ -9,9 +5,7 @@ const config = {
   context: __dirname + '/',
 
   entry: {
-    index: './main.js',
-    edit: './edit.js',
-    list: './list.js'
+    index: './client/index.js',
   },
 
   resolve : {
@@ -20,10 +14,8 @@ const config = {
   },
 
   output: {
-    path : path.join(__dirname, 'bundles'),
-    filename: '[name].js',
-    // for 404 page refresh, but seems useless:
-    publicPath: '/',
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js'
   },
 
   devtool: 'eval-source-map',
@@ -34,14 +26,7 @@ const config = {
     port: 8000
   },
 
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons.js',
-      filename: 'common.js'
-    })
-  ],
-
-  modules: {
+  module: {
     loaders: [
 
       {
@@ -54,7 +39,7 @@ const config = {
       },
 
       {
-        test: /\.css?$/,
+        test: /\.css$/,
         loaders: ["style-loader", "css-loader"]
       }
       
@@ -62,3 +47,5 @@ const config = {
   }
 
 }
+
+module.exports = config;

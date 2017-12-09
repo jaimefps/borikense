@@ -2,7 +2,7 @@ module.exports = [
 
   { 
     title: 'Borikense',
-    lib: require('../../src/accents/borikense')
+    lib: require('../../lib/accents/borikense')
   },
 
 ];

@@ -1,6 +1,6 @@
 const expect = require('expect');
-const apply = require('../../src/filters/_apply');
-const borikense = require('../../src/accents/borikense');
+const apply = require('../../lib/filters/_apply');
+const borikense = require('../../lib/accents/borikense');
 
 describe('Accent Applier', () => {
 
