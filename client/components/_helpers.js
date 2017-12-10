@@ -1,15 +1,15 @@
 import React from 'react';
 
-export function Dropdown (props) {
-  if (!props.show || !props.list) {
+export function Dropdown ({show, name, list, value, onChange}) {
+  if (!show || !list) {
     return null;
   }
-  const list = Array.isArray(props.list) ? props.list : Object.keys(props.list);
+  let array = Array.isArray(list) ? list : Object.keys(list);
   return (
-    <select disabled={props.disabeld} name={props.name} value={props.value} onChange={props.onChange}>
+    <select name={name} value={value} onChange={onChange}>
       <option value="">select</option>
       {
-        list.map((x, idx) => {
+        array.map((x, idx) => {
           return <option key={idx} value={x}>{x}</option>
         })
       }
