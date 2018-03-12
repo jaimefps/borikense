@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, DropWithLabel, DivText } from './_helpers';
+import { Header, DropWithLabel, DivText, Button } from './_helpers';
 import translate from '../../lib/filters/_apply';
 import dictionary from '../../lib/dictionary';
 
@@ -9,22 +9,25 @@ export default class Translator extends React.Component {
     this.state = {
       input: "",
       translation: "",
-      language: "spanish",
-      accent: "borikense",
+      language: "",
+      accent: "",
     }
     this.translate = this.translate.bind(this);
     this.handleInput = this.handleInput.bind(this);
   }
+
   translate () {
     const accent = dictionary[this.state.language][this.state.accent];
     const translation = translate(this.state.input, accent);
     this.setState({ translation }, () => console.log('@trans:', translation));
   }
+
   handleInput (e) {
     this.setState({ 
       [e.target.name]: e.target.value,
     });
   }
+
   chooseLang () {
     return (
         <DropWithLabel
@@ -37,6 +40,7 @@ export default class Translator extends React.Component {
         />
     )
   }
+
   chooseAccent () {
     if (this.state.language.length > 0) {
       return (
@@ -51,14 +55,16 @@ export default class Translator extends React.Component {
       )
     }
   }
+
   selectors () {
     return (
-      <div style={{}}>
+      <div>
         { this.chooseLang() }
         { this.chooseAccent() }
       </div>
     )
   }
+
   userInputText () {
     const show = this.state.language !== "" && 
                  this.state.accent !== "" && 
@@ -74,6 +80,7 @@ export default class Translator extends React.Component {
       )
     }
   }
+
   translatedText () {
     const show = this.state.language !== "" && 
                  this.state.accent !== "" && 
@@ -84,43 +91,30 @@ export default class Translator extends React.Component {
         <DivText
           key={this.state.translation}
           value={this.state.translation}
+          backgroundColor="lightyellow"
           readOnly
         />
       )
     }
   }
-  transButton () {
-    const show = this.state.language !== "" && 
-                 this.state.accent !== "" &&
-                 typeof dictionary[this.state.language][this.state.accent] != "undefined";
-    const buttonStyle = {
-      padding: "8px 0px",
-      backgroundColor: 'red',
-      width: '30%',
-      cursor: 'pointer',
-      fontSize: '15px',
-      fontWeight: 'bold',
-      color: 'white'
-    };
-    if (show) {
-      return <button style={buttonStyle} onClick={this.translate}> TRANSLATE </button>
-    }
-  }
+
   textFields () {
-    const style = {
-      textAlign: 'center',
-    }
     return (
-      <div style={style} className="text-inputs-container">
+      <div style={{textAlign: 'center'}}>
         { this.userInputText() }
         { this.translatedText() }
-        { this.transButton() }
+        <Button
+          state={this.state} 
+          dictionary={dictionary} 
+          translate={this.translate} 
+        />
       </div>
     )
   }
+
   render () {
     return (
-      <div style={{margin: '0px'}}>
+      <div>
         <Header text="Accent Translator"/>
         { this.selectors() }
         { this.textFields() }

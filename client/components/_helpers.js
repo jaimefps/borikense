@@ -35,7 +35,7 @@ export const DropWithLabel = ({ name, options, value, onChange, label, backgroun
     backgroundColor: backgroundColor,
   };
   const labelStyle = {
-    color:'grey'
+    color:'white'
   };
   const commons = { name, options, value, onChange };
   return (
@@ -48,7 +48,14 @@ export const DropWithLabel = ({ name, options, value, onChange, label, backgroun
   )
 };
 
-export const TextInput = ({ name, rows, cols, placeholder, value, onChange, readOnly }) => {
+export const TextInput = ({ name, rows, cols, placeholder, value, onChange, readOnly, backgroundColor }) => {
+  const style = {
+    minWidth: "50%",
+    maxWidth: "75%",
+    backgroundColor: backgroundColor,
+    border:'none',
+    fontSize: "14px",
+  }
   return (
     <textarea
       name={name}
@@ -58,18 +65,38 @@ export const TextInput = ({ name, rows, cols, placeholder, value, onChange, read
       value={value}
       onChange={onChange}
       readOnly={readOnly}
+      style={style}
     />
   )
 };
 
 export const DivText = (props) => {
   const style = {
-    padding: '15px',
-    backgroundColor: props.backgroundColor,
+    paddingTop: '15px',
   };
   return (
     <div style={style}>
       <TextInput { ...props } />
     </div>
   )
+};
+
+export const Button = ({ state, dictionary, translate }) => {
+  const show = state.language !== "" && 
+               state.accent !== "" &&
+               typeof dictionary[state.language][state.accent] != "undefined";
+  const buttonStyle = {
+    padding: "8px 0px",
+    backgroundColor: 'red',
+    width: '30%',
+    cursor: 'pointer',
+    fontSize: '15px',
+    fontWeight: 'bold',
+    color: 'white',
+    marginTop:'10px'
+  };
+  if (show) {
+    return <button style={buttonStyle} onClick={translate}> TRANSLATE </button>
+  }
+  return null;
 };
