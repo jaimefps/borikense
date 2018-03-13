@@ -16,8 +16,11 @@ export const Header = ({ text }) => {
 
 export const Dropdown = ({ name, options, value, onChange }) => {
   const opts = Array.isArray(options) ? options : Object.keys(options);
+  const style = {
+    fontSize: '14px'
+  }
   return (
-    <select name={name} value={value} onChange={onChange}>
+    <select style={style} name={name} value={value} onChange={onChange}>
       <option value="">select</option>
       {
         opts.map((x, idx) => {
