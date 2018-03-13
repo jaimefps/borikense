@@ -90,7 +90,7 @@ export const Button = ({ state, dictionary, translate }) => {
                typeof dictionary[state.language][state.accent] != "undefined";
   const buttonStyle = {
     padding: "8px 0px",
-    backgroundColor: 'red',
+    backgroundColor: 'orange',
     width: '30%',
     cursor: 'pointer',
     fontSize: '15px',
