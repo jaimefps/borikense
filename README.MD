@@ -16,5 +16,4 @@ Easily expandable webapp for translating text to regional accents.
 # TODO
 0. Create documentation for contributting. 
 1. Create accent exeption logic.
-2. Document contribution process.
-3. Play with testing frameworks for React.
+2. Use Jest for testing React components.
