@@ -58,7 +58,9 @@ export const TextInput = ({ name, rows, cols, placeholder, value, onChange, read
     backgroundColor: backgroundColor,
     border:'none',
     fontSize: "14px",
-  }
+    boxSizing: "border-box",
+    padding: "15px"
+  };
   return (
     <textarea
       name={name}
