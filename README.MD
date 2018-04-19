@@ -1,19 +1,23 @@
+title (#borikense)
+live (#live-website-coming-soon)
+ot run (#to-run-on-your-computer)
+
 # borikense
 Easily expandable webapp for translating text to regional accents.
 
 
-# Live Website Comming Soon.
+## Live Website Coming Soon
 
 ![alt text](assets/phone.png)
 ![alt text](assets/browser.png)
 
 
-# To run on your computer
+## To run on your computer
 `npm i`
 
 `npm start`
 
-# TODO
+### TODO
 0. Create documentation for contributting. 
 1. Create accent exeption logic.
 2. Use Jest for testing React components.
