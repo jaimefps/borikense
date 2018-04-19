@@ -1,6 +1,6 @@
-title (#borikense)
-live (#live-website-coming-soon)
-ot run (#to-run-on-your-computer)
+[title] (#borikense)
+[live] (#live-website-coming-soon)
+[to run] (#to-run-on-your-computer)
 
 # borikense
 Easily expandable webapp for translating text to regional accents.
