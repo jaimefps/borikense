@@ -5,7 +5,6 @@ Easily expandable webapp for translating text to regional accents.
 # Live Website Comming Soon.
 
 ![alt text](assets/phone.png)
-![alt text](assets/browser.png)
 
 
 # To run on your computer
