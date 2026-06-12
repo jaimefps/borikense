@@ -8,7 +8,13 @@ https://jaimefps.github.io/borikense/
 The 2026 app lives in [`/2026`](2026/) and deploys automatically on push to master.
 The original 2018 app remains in the repo root.
 
-![alt text](assets/phone.png)
+![The 2026 borikense app](assets/app-2026.png)
+
+<details>
+<summary>The 2018 original</summary>
+
+![The 2018 borikense app](assets/phone.png)
+</details>
 
 
 # To run on your computer
