@@ -1,3 +1,8 @@
+// Touch devices have no hover: tooltips become tap-to-peek toasts,
+// and we skip autofocus so the keyboard doesn't pop up on load.
+const IS_TOUCH =
+  typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+
 export default function Studio({
   input,
   onInput,
@@ -6,6 +11,7 @@ export default function Studio({
   onClear,
   onCopy,
   onExample,
+  onPeek,
 }) {
   const hasOutput = segments.some((s) => s.text.trim() !== '');
 
@@ -28,7 +34,7 @@ export default function Studio({
             onChange={(e) => onInput(e.target.value)}
             placeholder="Escribe aquí tu español de libro…"
             spellCheck={false}
-            autoFocus
+            autoFocus={!IS_TOUCH}
           />
         </div>
 
@@ -46,7 +52,7 @@ export default function Studio({
             {hasOutput ? (
               segments.map((seg, i) =>
                 seg.changed ? (
-                  <mark key={i} data-og={seg.og}>
+                  <mark key={i} data-og={seg.og} onClick={() => onPeek(seg.og)}>
                     {seg.text}
                   </mark>
                 ) : (
@@ -70,8 +76,8 @@ export default function Studio({
           🎲 Tírame un ejemplo
         </button>
         <p className="toolbar-hint">
-          pasa el mouse por las palabras <mark className="hint-mark">marcadas</mark> pa ver el
-          original
+          {IS_TOUCH ? 'toca' : 'pasa el mouse por'} las palabras{' '}
+          <mark className="hint-mark">marcadas</mark> pa ver el original
         </p>
       </div>
     </>

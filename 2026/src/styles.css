@@ -580,6 +580,18 @@ button {
   }
 }
 
+/* ---- touch devices: no hover, so tooltips become tap-to-peek toasts ---- */
+@media (pointer: coarse) {
+  .panel-output mark::after,
+  .chip::after {
+    display: none;
+  }
+
+  .panel-output mark {
+    cursor: pointer;
+  }
+}
+
 /* ---- mobile ---- */
 @media (max-width: 760px) {
   .masthead-flag {
@@ -593,6 +605,19 @@ button {
   .studio {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  .quirks-row {
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 8px 13px;
+    font-size: 0.88rem;
+  }
+
+  .masthead-title {
+    font-size: clamp(2.6rem, 12vw, 3.4rem);
   }
 
   .arrow {

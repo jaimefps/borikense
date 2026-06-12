@@ -49,6 +49,8 @@ export default function App() {
     setInput(EXAMPLES[exampleIdx.current]);
   };
 
+  const peekOriginal = (og) => showToast(`antes: ${og}`);
+
   const copyOutput = async () => {
     if (!output) return;
     try {
@@ -78,6 +80,7 @@ export default function App() {
           onClear={() => setInput('')}
           onCopy={copyOutput}
           onExample={nextExample}
+          onPeek={peekOriginal}
         />
       </main>
       <footer className="footer rise" style={{ '--delay': '0.5s' }}>
