@@ -1,0 +1,599 @@
+/* ============================================================
+   borikense 2026 — san juan street-festival poster
+   palette: old san juan facades + the flag, sun-faded
+   type: fraunces (display, wonky & warm) + asap (ui, rioplatense)
+   ============================================================ */
+
+:root {
+  --paper: #fbf2e0;
+  --white: #fffdf6;
+  --ink: #20243a;
+  --coral: #e8542f;
+  --cobalt: #2456c5;
+  --mango: #ffc845;
+  --teal: #0f8a7d;
+  --ink-soft: rgba(32, 36, 58, 0.62);
+  --display: 'Fraunces', Georgia, serif;
+  --ui: 'Asap', 'Helvetica Neue', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* grain over everything, like sun-bleached poster paper */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--cobalt);
+  color: var(--paper);
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--cobalt);
+  outline-offset: 2px;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  flex: 1;
+}
+
+/* ---- flag ribbon across the very top ---- */
+.ribbon {
+  height: 12px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--coral) 0 18px,
+    var(--white) 18px 36px,
+    var(--cobalt) 36px 54px
+  );
+  border-bottom: 2px solid var(--ink);
+}
+
+/* ---- masthead ---- */
+.masthead {
+  text-align: center;
+  padding: clamp(20px, 3.5vh, 44px) 16px 8px;
+  position: relative;
+}
+
+/* the flag, stuck on like a poster sticker */
+.masthead-flag {
+  position: absolute;
+  width: clamp(72px, 8vw, 104px);
+  left: clamp(16px, 9vw, 140px);
+  top: clamp(20px, 4.5vh, 52px);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(-7deg);
+  transition: transform 0.2s ease;
+}
+
+.masthead-flag:hover {
+  transform: rotate(-2deg) scale(1.06);
+}
+
+.masthead-eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+
+.masthead-title {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(3rem, 9vw, 5.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-shadow: 0.045em 0.045em 0 var(--mango);
+}
+
+/* the dot of the "i" is the lone star of the flag */
+.star-i {
+  position: relative;
+  display: inline-block;
+}
+
+.star-i .star {
+  position: absolute;
+  top: -0.18em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.34em;
+  color: var(--coral);
+  text-shadow: none;
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: translateX(-50%) scale(1) rotate(0deg); }
+  50% { transform: translateX(-50%) scale(1.25) rotate(18deg); }
+}
+
+.masthead-tagline {
+  margin: 12px auto 0;
+  max-width: 44ch;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1rem, 2.2vw, 1.18rem);
+  line-height: 1.5;
+}
+
+.masthead-tagline mark,
+.hint-mark {
+  background: var(--mango);
+  padding: 0 0.15em;
+  border-radius: 0.3em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ---- quirk chips ---- */
+.quirks {
+  margin-top: clamp(16px, 2.5vh, 26px);
+  text-align: center;
+}
+
+.quirks-heading {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--coral);
+}
+
+.quirks-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 12px;
+}
+
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.chip[data-tone='coral'] { --chip-bg: var(--coral); --chip-fg: var(--white); }
+.chip[data-tone='cobalt'] { --chip-bg: var(--cobalt); --chip-fg: var(--white); }
+.chip[data-tone='teal'] { --chip-bg: var(--teal); --chip-fg: var(--white); }
+.chip[data-tone='mango'] { --chip-bg: var(--mango); --chip-fg: var(--ink); }
+
+.chip-on {
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.chip-off {
+  background: transparent;
+  color: var(--ink);
+  border-style: dashed;
+  opacity: 0.5;
+}
+
+.chip:hover {
+  transform: translate(-1px, -1px);
+}
+
+.chip-on:hover {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.chip:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.chip-count {
+  display: grid;
+  place-items: center;
+  min-width: 1.5em;
+  height: 1.5em;
+  padding: 0 0.3em;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.78em;
+  font-weight: 700;
+  animation: pop 0.25s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+/* hover card explaining the rule */
+.chip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+  width: max-content;
+  max-width: 270px;
+  padding: 8px 12px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 10;
+}
+
+.chip:hover::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ---- the studio: two panels + arrow ---- */
+.studio {
+  display: grid;
+  grid-template-columns: 1fr 96px 1fr;
+  align-items: stretch;
+  gap: 0;
+  margin-top: clamp(16px, 2.5vh, 26px);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  transition: box-shadow 0.15s ease;
+}
+
+.panel-in {
+  box-shadow: 7px 7px 0 var(--cobalt);
+}
+
+.panel-in:focus-within {
+  box-shadow: 10px 10px 0 var(--cobalt);
+}
+
+.panel-out {
+  box-shadow: 7px 7px 0 var(--coral);
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 16px;
+  border-bottom: 2px dashed rgba(32, 36, 58, 0.18);
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+}
+
+.dot-cobalt { background: var(--cobalt); }
+.dot-coral { background: var(--coral); }
+
+.panel-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.panel-clear {
+  margin-left: auto;
+  border: none;
+  background: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.panel-clear:hover {
+  color: var(--coral);
+}
+
+.panel-changes {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--coral);
+  animation: pop 0.25s ease;
+}
+
+.panel-input {
+  flex: 1;
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  background: transparent;
+  resize: none;
+  font-family: var(--ui);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.panel-input:focus {
+  outline: none;
+}
+
+.panel-input::placeholder {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.panel-output {
+  flex: 1;
+  padding: 14px 20px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.panel-empty {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* a changed word: mango marker + wavy coral underline; hover = original */
+.panel-output mark {
+  position: relative;
+  background: var(--mango);
+  padding: 0 0.13em;
+  border-radius: 0.25em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  text-decoration: underline wavy var(--coral) 1.5px;
+  text-underline-offset: 0.22em;
+  cursor: help;
+}
+
+.panel-output mark::after {
+  content: 'antes: ' attr(data-og);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+  width: max-content;
+  max-width: 240px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 10;
+}
+
+.panel-output mark:hover::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.panel-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 14px;
+  border-top: 2px dashed rgba(32, 36, 58, 0.18);
+}
+
+/* the arrow badge between panels */
+.arrow {
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--coral);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  font-size: 1.5rem;
+  font-weight: 700;
+  z-index: 2;
+}
+
+/* ---- buttons ---- */
+.btn {
+  padding: 10px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.btn:active:not(:disabled) {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-mango { background: var(--mango); color: var(--ink); }
+.btn-cobalt { background: var(--cobalt); color: var(--white); }
+.btn-teal { background: var(--teal); color: var(--white); }
+
+/* ---- toolbar under the studio ---- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.toolbar-hint {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+/* ---- toast ---- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
+  box-shadow: 4px 4px 0 rgba(32, 36, 58, 0.25);
+  animation: toast-in 0.25s ease;
+  z-index: 50;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(14px);
+  }
+}
+
+/* ---- footer ---- */
+.footer {
+  margin: 22px 0 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  padding: 0 16px;
+}
+
+.footer-star {
+  color: var(--coral);
+}
+
+/* ---- entrance ---- */
+.rise {
+  animation: rise 0.6s ease both;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .star-i .star,
+  .chip-count,
+  .panel-changes {
+    animation: none;
+  }
+}
+
+/* ---- mobile ---- */
+@media (max-width: 760px) {
+  .masthead-flag {
+    position: static;
+    display: block;
+    margin: 0 auto 10px;
+    width: 64px;
+    transform: rotate(-4deg);
+  }
+
+  .studio {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+    margin: 14px 0;
+  }
+
+  .panel {
+    min-height: 230px;
+  }
+
+  .panel-actions {
+    justify-content: center;
+  }
+}

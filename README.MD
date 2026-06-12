@@ -2,15 +2,19 @@
 Easily expandable webapp for translating text to regional accents.
 
 
-# Live Website Comming Soon.
+# Live Website
+https://jaimefps.github.io/borikense/
+
+The 2026 app lives in [`/2026`](2026/) and deploys automatically on push to master.
+The original 2018 app remains in the repo root.
 
 ![alt text](assets/phone.png)
 
 
 # To run on your computer
-`npm i`
+The 2026 app: `cd 2026 && npm i && npm run dev`
 
-`npm start`
+The 2018 original: `npm i && npm start`
 
 # TODO
 0. Create documentation for contributting. 
