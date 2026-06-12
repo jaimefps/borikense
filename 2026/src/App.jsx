@@ -82,7 +82,16 @@ export default function App() {
       </main>
       <footer className="footer rise" style={{ '--delay': '0.5s' }}>
         <span className="footer-star">★</span> hecho con orgullo · el motol de reglaj nació en el
-        2018, la cara bonita en el 2026 <span className="footer-star">★</span>
+        2018, la cara bonita en el 2026 ·{' '}
+        <a
+          className="footer-link"
+          href="https://github.com/jaimefps/borikense"
+          target="_blank"
+          rel="noreferrer"
+        >
+          el código vive en GitHub
+        </a>{' '}
+        <span className="footer-star">★</span>
       </footer>
       {toast && (
         <div className="toast" role="status">
